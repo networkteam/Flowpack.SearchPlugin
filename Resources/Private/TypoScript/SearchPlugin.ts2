@@ -2,8 +2,7 @@
 prototype(Flowpack.SearchPlugin:Search) {
 
 	// we store the search results in the TypoScript context, so that they bubble through the nested elements like the searchResultRenderer
-	@override.searchResults = ${this.searchQuery.execute()}
-
+	@override.searchResults = ${request.arguments.search ? this.searchQuery.execute().nodes : null}
 
 	searchQuery = ${Search.query(site).fulltext(request.arguments.search)}
 
@@ -15,7 +14,7 @@ prototype(Flowpack.SearchPlugin:Search) {
 	searchResultRenderer = TYPO3.TypoScript:Collection {
 		collection = ${searchResults}
 		itemRenderer = Flowpack.SearchPlugin:SingleResult
-		itemName = 'node'
+		itemName = 'result'
 	}
 
 	searchResultRenderer.@process.wrap = ${'<ul>' + value + '</ul>'}
@@ -30,9 +29,8 @@ prototype(Flowpack.SearchPlugin:Search) {
 	}
 }
 
-
 prototype(Flowpack.SearchPlugin:Search.Form) < prototype(TYPO3.TypoScript:Template) {
-	templatePath = 'resource://Flowpack.SearchPlugin/Private/Templates/NodeTypes/Search.Form.Html'
+	templatePath = 'resource://Flowpack.SearchPlugin/Private/Templates/NodeTypes/Search.Form.html'
 	searchWord = ${request.arguments.search}
 }
 
