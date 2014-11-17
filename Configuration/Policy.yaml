@@ -1,0 +1,8 @@
+resources:
+  methods:
+    Flowpack_SearchPlugin_Controller_SuggestController: 'method(Flowpack\SearchPlugin\Controller\SuggestController->indexAction())'
+
+acls:
+  Everybody:
+    methods:
+      Flowpack_SearchPlugin_Controller_SuggestController: GRANT
