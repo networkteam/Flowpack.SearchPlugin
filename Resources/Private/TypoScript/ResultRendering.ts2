@@ -1,9 +1,9 @@
 prototype(Flowpack.SearchPlugin:SingleResult) < prototype(TYPO3.TypoScript:Case) {
 	default {
 		condition = Flowpack.SearchPlugin:CanRender {
-			type = ${result.node.nodeType.name + 'SearchResult'}
+			type = ${result.nodeType.name + 'SearchResult'}
 		}
-		type = ${result.node.nodeType.name + 'SearchResult'}
+		type = ${result.nodeType.name + 'SearchResult'}
 	}
 
 	fallback {
@@ -14,10 +14,9 @@ prototype(Flowpack.SearchPlugin:SingleResult) < prototype(TYPO3.TypoScript:Case)
 
 prototype(TYPO3.Neos:DocumentSearchResult) < prototype(TYPO3.TypoScript:Template) {
 	templatePath = 'resource://Flowpack.SearchPlugin/Private/Templates/SearchResult/DocumentSearchResult.html'
-	node = ${result.node}
-	meta = ${result.meta}
-	title = ${q(result.node).property('title')}
-	parents =  ${Array.reverse(q(result.node).parents('[instanceof TYPO3.Neos:Document]').get())}
+	node = ${result}
+	title = ${q(result).property('title')}
+	parents =  ${Array.reverse(q(result).parents('[instanceof TYPO3.Neos:Document]').get())}
 }
 
 prototype(TYPO3.Neos.NodeTypes:PageSearchResult) < prototype(TYPO3.Neos:DocumentSearchResult)

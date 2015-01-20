@@ -1,12 +1,6 @@
 {namespace neos=TYPO3\Neos\ViewHelpers}
 <neos:link.node node="{node}">{title}</neos:link.node>
 
-<f:if condition="{meta.highlight.text}">
-	<p>
-		<f:for each="{meta.highlight.text}" as="fragment" iteration="fragmentIterator">
-			{fragment -> f:format.raw()}{f:if(condition: fragmentIterator.isLast, else: '...')}
-		</f:for>
-	</p>
 
 	<div class="breadcrumb">
 		<span>Path:</span>
@@ -15,4 +9,3 @@
 		</f:for>
 		<neos:link.node node="{node}" />
 	</div>
-</f:if>

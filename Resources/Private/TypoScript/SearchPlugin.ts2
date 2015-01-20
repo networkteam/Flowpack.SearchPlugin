@@ -1,5 +1,5 @@
 prototype(Flowpack.SearchPlugin:Search) {
-	searchQuery = ${this.searchTerm ? Search.query(site).fulltext(request.arguments.search).highlight() : null}
+	searchQuery = ${this.searchTerm ? Search.query(site).fulltext(request.arguments.search) : null}
 	totalSearchResults = ${this.searchQuery.count()}
 
 	searchTerm = ${request.arguments.search}

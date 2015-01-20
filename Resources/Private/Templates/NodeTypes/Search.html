@@ -7,7 +7,7 @@
 	<f:if condition="{searchQuery}">
 		<search:widget.paginate query="{searchQuery}" as="results">
 			Showing {results.nodes -> f:count()} of {totalSearchResults} results
-			<ts:render path="searchResultRenderer" context="{searchResults: results.nodes}" />
+			<ts:render path="searchResultRenderer" context="{searchResults: results}" />
 		</search:widget.paginate>
 	</f:if>
 </div>
